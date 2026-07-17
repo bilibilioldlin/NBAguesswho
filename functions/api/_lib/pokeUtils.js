@@ -14,10 +14,6 @@ export function getPlayerByName(playerList, name) {
  * 根据难度筛选一个随机球员
  */
 export function getPlayerByDf(playerList, hard = 0) {
-  if (hard === 0) {
-    return Math.floor(Math.random() * playerList.length);
-  }
-
   const candidates = [];
   for (const p of playerList) {
     if (matchHard(p, hard)) {

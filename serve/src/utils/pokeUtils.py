@@ -60,9 +60,6 @@ def getPlayerByIndex(PlayerList, index_str):
 
 def getPlayerByDf(PlayerList, hard=0, ngen=0):
     """根据难度和世代筛选一个随机球员"""
-    if hard == 0:
-        return random.randint(0, len(PlayerList) - 1)
-
     candidates = []
     for p in PlayerList:
         if _match_hard(p, hard):
