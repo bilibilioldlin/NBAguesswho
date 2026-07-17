@@ -76,14 +76,16 @@ def getPlayerByDf(PlayerList, hard=0, ngen=0):
 
 def _match_hard(player, hard):
     """根据难度匹配球员"""
-    if hard == 0:  # 随机 - 全部球员
-        return True
-    elif hard == 1:  # 全明星 - 至少进过1次全明星
-        return player["all_star"] >= 1
-    elif hard == 2:  # MVP - 1996年后拿过MVP
+    if hard == 0:  # 新手模式 - MVP传奇
         return player["mvp"] >= 1
-    elif hard == 3:  # 总冠军 - 有总冠军戒指
+    elif hard == 1:  # 简单模式 - 总冠军球员
         return player["champion"] >= 1
+    elif hard == 2:  # 普通模式 - 全明星球员
+        return player["all_star"] >= 1
+    elif hard == 3:  # 困难模式 - 角色球员（无全明星）
+        return player["all_star"] == 0
+    elif hard == 4:  # 老球迷模式 - 全部球员
+        return True
     return True
 
 

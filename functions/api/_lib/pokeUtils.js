@@ -37,10 +37,11 @@ export function getPlayerByDf(playerList, hard = 0) {
  * 根据难度匹配球员
  */
 function matchHard(player, hard) {
-  if (hard === 0) return true;           // 随机 - 全部球员
-  if (hard === 1) return player.all_star >= 1;   // 全明星
-  if (hard === 2) return player.mvp >= 1;         // MVP
-  if (hard === 3) return player.champion >= 1;    // 总冠军
+  if (hard === 0) return player.mvp >= 1;          // 新手模式 - MVP传奇
+  if (hard === 1) return player.champion >= 1;     // 简单模式 - 总冠军
+  if (hard === 2) return player.all_star >= 1;     // 普通模式 - 全明星
+  if (hard === 3) return player.all_star === 0;    // 困难模式 - 角色球员
+  if (hard === 4) return true;                     // 老球迷模式 - 全部球员
   return true;
 }
 

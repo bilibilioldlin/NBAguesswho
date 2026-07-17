@@ -49,7 +49,7 @@ def guess():
 @app.route('/api/getanswer', methods=["GET"])
 def getanswer():
     """获取指定答案的完整数据(用于揭晓答案)"""
-    player_id = request.args.get('pokemon', default=0, type=int)
+    player_id = request.args.get('player', default=0, type=int)
     if player_id < 0 or player_id >= len(PlayerList):
         return jsonify({"error": "球员ID错误"}), 400
     return jsonify(PlayerList[player_id])

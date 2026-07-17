@@ -3,7 +3,7 @@ import { PlayerList } from './_lib/nbaData.js';
 
 export async function onRequestGet(context) {
   const url = new URL(context.request.url);
-  const playerId = parseInt(url.searchParams.get('pokemon') || '0');
+  const playerId = parseInt(url.searchParams.get('player') || '0');
 
   if (playerId < 0 || playerId >= PlayerList.length) {
     return new Response(JSON.stringify({ error: '球员ID错误' }), {

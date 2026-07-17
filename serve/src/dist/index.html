@@ -44,6 +44,23 @@
       font-weight: 500;
     }
 
+    .update-bar {
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border: 2px solid #f59e0b;
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin-bottom: 16px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: #92400e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
     .game-bar {
       display: flex;
       gap: 12px;
@@ -328,6 +345,62 @@
       color: #64748b;
     }
 
+    /* 页脚个人信息（暂不启用，后续恢复用）
+    .footer {
+      margin-top: 40px;
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .footer-section {
+      margin-bottom: 20px;
+    }
+    .footer-section:last-child { margin-bottom: 0; }
+    .footer-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      color: #475569;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s;
+      border: 1px solid #e2e8f0;
+    }
+    .social-link:hover {
+      background: #e2e8f0;
+      transform: translateY(-1px);
+    }
+    .social-link .icon { font-size: 16px; }
+
+    .footer-note {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+    */
+
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -440,13 +513,18 @@
       <p>猜NBA球星 - 根据属性提示推理出今日答案</p>
     </header>
 
+    <div class="update-bar">
+      🎉 已更新440名球员，涵盖名宿、超巨、全明星、角色球员和部分新生代球员
+    </div>
+
     <div class="game-bar">
       <label>难度：</label>
       <select id="difficulty">
-        <option value="0">随机（全部300名球员）</option>
-        <option value="1">全明星（至少入选过1次）</option>
-        <option value="2">MVP（1996年后获MVP）</option>
-        <option value="3">总冠军（有总冠军戒指）</option>
+        <option value="0">🏆 新手模式（MVP传奇，37人）</option>
+        <option value="1">🟢 简单模式（总冠军球员，143人）</option>
+        <option value="2">⚡ 普通模式（全明星球员，200人）</option>
+        <option value="3">🔥 困难模式（角色球员，240人）</option>
+        <option value="4">👴 老球迷模式（全部球员，440人）</option>
       </select>
 
       <label style="margin-left: 12px;">球员：</label>
@@ -731,7 +809,7 @@
     async function revealAnswer() {
       if (answerId === null) return;
       try {
-        const res = await fetch(`${API_BASE}/api/getanswer?pokemon=${answerId}`);
+        const res = await fetch(`${API_BASE}/api/getanswer?player=${answerId}`);
         const player = await res.json();
         finished = true;
         giveupBtn.disabled = true;
