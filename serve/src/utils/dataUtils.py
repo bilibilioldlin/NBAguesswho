@@ -2,7 +2,7 @@ import json
 import os
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
-root = current_dir + "/.."
+root = current_dir + "/../../.."
 
 
 def NbaPlayerGetter():

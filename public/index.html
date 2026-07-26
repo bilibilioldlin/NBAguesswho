@@ -25,6 +25,33 @@
       border-radius: 16px;
       margin-bottom: 20px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      position: relative;
+    }
+    .nav-link {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 8px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      transition: all 0.2s;
+    }
+    .nav-link:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: rgba(255,255,255,0.5);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 600px) {
+      .nav-link { top: 8px; right: 8px; font-size: 12px; padding: 6px 10px; }
     }
     header h1 {
       font-size: 48px;
@@ -509,6 +536,9 @@
 <body>
   <div class="container">
     <header>
+      <a class="nav-link" href="https://conghangdaola-dga.pages.dev" target="_blank" rel="noopener">
+        📊 夯拉排行小工具
+      </a>
       <h1>🏀 NBAle</h1>
       <p>猜NBA球星 - 根据属性提示推理出今日答案</p>
     </header>
